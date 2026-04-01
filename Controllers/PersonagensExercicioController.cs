@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using RpgApi.Models;
 using RpgApi.Models.Enuns;
 
@@ -10,7 +11,7 @@ namespace RpgApi.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    public class PersonagensExemploController : ControllerBase
+    public class PersonagensExercicioController : ControllerBase
     {
         private static List<Personagem> personagens = new List<Personagem>()
         {
@@ -45,58 +46,73 @@ namespace RpgApi.Controllers
             new Personagem() { Id = 29, Nome = "Darthur", PontosVida=96, Forca=22, Defesa=15, Inteligencia=34, Classe=ClasseEnum.Arqueiro}
         };
 
-        /* public IActionResult Get()
-       {
-           Personagem p = personagens[0];
-           return Ok(personagens); 
-       }*/
+        [HttpGet("GetByName/{personagemName}")]
 
-        [HttpGet("{id}")]
-        public IActionResult GetFirst(int id)
+        public IActionResult GetByName(string personagemName)
         {
-            return Ok(personagens.FirstOrDefault(pe => pe.Id == id));
+            Personagem pBuscar = personagens.FirstOrDefault(p => p.Nome.ToUpper().Contains(personagemName.ToUpper()));
+            if (string.IsNullOrEmpty(personagemName))
+                return BadRequest("O personagem não existe.");
+            if (pBuscar == null)
+                return NotFound("O personagem não foi encontrado, tente novamente.");
+            return Ok(pBuscar);
         }
 
-        [HttpGet("GetAll")]
-        public IActionResult Get()
+        [HttpGet("GetClerigoMago")]
+
+        public IActionResult GetClerigoMago()
         {
+            List<Personagem> cavaleiros = personagens.Where(p => p.Classe == ClasseEnum.Cavaleiro).ToList();
+            foreach (Personagem cavaleiro in cavaleiros)
+            {
+                personagens.Remove(cavaleiro);
+            }
+
+            return Ok(personagens.OrderByDescending(p => p.PontosVida).ToList());
+        }
+
+
+        [HttpGet("GetEstatisticas")]
+        public IActionResult GetEstatisticas()
+        {
+            return Ok("Quantidade de Personagens: " + personagens.Count() + " Somatório de Inteligencia do Grupo: " + personagens.Sum(p => p.Inteligencia));
+
+        }
+
+        [HttpPost("PostValidacao")]
+        public IActionResult PostValidacao(Personagem newCharacter)
+        {
+            if (newCharacter.Defesa < 10)
+                return BadRequest("Um personagem não pode ser adicionado com defesa menor que 10");
+
+            if (newCharacter.Inteligencia < 30)
+                return BadRequest("Um personagem não nascer com 30 de inteligência");
+
+
+            personagens.Add(newCharacter);
             return Ok(personagens);
         }
 
-        [HttpPost]
-        public IActionResult AddPersonagem(Personagem NovoPersonagem)
+        [HttpPost("PostValidacaoMago")]
+
+        public IActionResult PostValidacaoMago(Personagem newCharacter)
         {
-            personagens.Add(NovoPersonagem);
+            if (newCharacter.Classe == ClasseEnum.Mago && newCharacter.Inteligencia < 35)
+            {
+                return BadRequest("Mago não pode ser incluído com Inteligência menor que 35");
+            }
+            personagens.Add(newCharacter);
             return Ok(personagens);
         }
 
-        /*  [HttpDelete("{id}")]
-          public IActionResult RemoverPersonagem(Personagem DeletarPersonagem)
-          {
-              personagens.Remove(DeletarPersonagem);
-              return Ok(personagens);
-          } */
+        [HttpGet("GetByClasse/{enumId}")]
 
-        [HttpDelete("{Id}")]
-        public IActionResult Deletar(int id)
+        public IActionResult GetByClasse(int enumId)
         {
-            personagens.RemoveAll(p => p.Id == id);
-            return Ok(personagens);
+            ClasseEnum EnumDigitado = (ClasseEnum)enumId;
+            List<Personagem> characterSearch = personagens.FindAll(character => character.Classe == EnumDigitado);
+            return Ok(characterSearch);
         }
 
-
-        [HttpPut]
-        public IActionResult UpdatePersonagem(Personagem p)
-        {
-            Personagem personagemAlterado = personagens.Find(pers => pers.Id == p.Id);
-            personagemAlterado.Nome = p.Nome;
-            personagemAlterado.PontosVida = p.PontosVida;
-            personagemAlterado.Forca = p.Forca;
-            personagemAlterado.Defesa = p.Defesa;
-            personagemAlterado.Inteligencia = p.Inteligencia;
-            personagemAlterado.Classe = p.Classe;
-
-            return Ok(personagens);
-        }
     }
 }
