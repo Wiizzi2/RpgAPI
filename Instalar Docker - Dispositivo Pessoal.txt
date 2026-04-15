@@ -1,0 +1,18 @@
+COMANDOS PODEM SER EXECUTADOS NO POWERSHELL
+
+Rodar linha de comando para WSL (Subsistema windows para linux). Talvez seja necessário reinicialização.
+wsl --install 
+
+Instalar docker:
+winget install Docker.DockerDesktop
+
+Ou fazer donwload no site:
+https://www.docker.com/products/docker-desktop/
+
+Instalar Container SQL:
+docker pull mcr.microsoft.com/mssql/server:2019-latest 
+
+docker run --name SQL_HAS -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=*123456HAS*" -p 1433:1433 -e "MSSQL_COLLATION=Latin1_General_CS_AI" -d mcr.microsoft.com/mssql/server:2019-latest 
+
+Instalar o Managment Studio (IDE para conectar no banco conteinerizado no docker). Escolher na parte de Idiomas o Inglês
+https://aka.ms/ssms/22/release/vs_SSMS.exe
