@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RpgApi.Models.Enuns;
+using RpgAPI.Models;
 
 namespace RpgApi.Models
 {
@@ -15,5 +16,8 @@ namespace RpgApi.Models
         public int Defesa { get; set; }
         public int Inteligencia { get; set; }
         public ClasseEnum Classe { get; set; }
+        public byte[]? FotoPersoangem { get; set; }
+        public int? UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
     }
 }

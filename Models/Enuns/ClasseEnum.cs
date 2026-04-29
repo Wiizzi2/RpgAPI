@@ -8,4 +8,11 @@ namespace RpgApi.Models.Enuns
         Espadachim = 4,
         Arqueiro = 5
     }
+
+    /*public enum TipoEnum
+    {
+        Espada = 1,
+        Arco 
+    } */
 }
+
