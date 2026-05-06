@@ -21,7 +21,7 @@ namespace RpgApi.Data
 
         public DbSet<Usuario> TB_USUARIOS { get; set; }
         public DbSet<Arma> TB_ARMAS { get; set; }
-
+        public DbSet<Habilidade> TB_HABILIDADES { get; set; }
         public DbSet<Personagem> TB_PERSONAGENS { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,14 +30,56 @@ namespace RpgApi.Data
             modelBuilder.Entity<Arma>().ToTable("TB_ARMAS");
             modelBuilder.Entity<Arma>().HasData
             (
-                new Arma() { Id = 1, Nome = "Espada Kaos", Dano = 48 },
-                new Arma() { Id = 2, Nome = "Arco iNOE", Dano = 21 },
-                new Arma() { Id = 3, Nome = "Adaga Heian", Dano = 69 },
-                new Arma() { Id = 4, Nome = "Amuleto KoIs Amaldiçoado", Dano = 2 },
-                new Arma() { Id = 5, Nome = "Olhos ReinKiri", Dano = 12 }
+                new Arma() { Id = 1, Nome = "Espada Kaos", Dano = 48, PersonagemId = 1 },
+                new Arma() { Id = 2, Nome = "Arco iNOE", Dano = 21, PersonagemId = 4 },
+                new Arma() { Id = 3, Nome = "Adaga Heian", Dano = 69, PersonagemId = 8 },
+                new Arma() { Id = 4, Nome = "Amuleto KoIs Amaldiçoado", Dano = 2, PersonagemId = 2 },
+                new Arma() { Id = 5, Nome = "Olhos ReinKiri", Dano = 12, PersonagemId = 7 }
             );
 
-            //Criação Usuario
+            modelBuilder.Entity<Habilidade>().ToTable("TB_HABILIDADES");
+            modelBuilder.Entity<Habilidade>()
+                .HasData
+            (
+                new Habilidade(){Id = 1, Nome = "Fogo amaldiçoado", Dano = 23},
+                new Habilidade(){Id = 2, Nome = "Chuva ContraTempoária", Dano = 67},
+                new Habilidade(){Id = 3, Nome = "Corte Simples | Novo estilo da Sombra", Dano = 16},
+                new Habilidade(){Id = 4, Nome = "Gás Tóxico | MicroFissura"},
+                new Habilidade(){Id = 5, Nome = "Pico de força Espartana"},
+                new Habilidade(){Id = 6, Nome = "Anomalia Temporal"}
+            );
+
+            modelBuilder.Entity<PersonagemHabilidade>().ToTable("TB_PERSONAGENS_HABILIDADES");
+            modelBuilder.Entity<PersonagemHabilidade>()
+                .HasKey(ph => new {ph.PersonagemId, ph.HabilidadeId});
+            modelBuilder.Entity<PersonagemHabilidade>()
+                .HasData
+            (
+                new PersonagemHabilidade() {PersonagemId = 1, HabilidadeId = 2},
+                new PersonagemHabilidade() {PersonagemId = 1, HabilidadeId = 1},
+                new PersonagemHabilidade() {PersonagemId = 1, HabilidadeId = 3},
+                new PersonagemHabilidade() {PersonagemId = 1, HabilidadeId = 4},
+                new PersonagemHabilidade() {PersonagemId = 1, HabilidadeId = 5},
+                new PersonagemHabilidade() {PersonagemId = 2, HabilidadeId = 1},
+                new PersonagemHabilidade() {PersonagemId = 2, HabilidadeId = 3},
+                new PersonagemHabilidade() {PersonagemId = 3, HabilidadeId = 1},
+                new PersonagemHabilidade() {PersonagemId = 3, HabilidadeId = 3},
+                new PersonagemHabilidade() {PersonagemId = 3, HabilidadeId = 2},
+                new PersonagemHabilidade() {PersonagemId = 4, HabilidadeId = 5},
+                new PersonagemHabilidade() {PersonagemId = 5, HabilidadeId = 1},
+                new PersonagemHabilidade() {PersonagemId = 5, HabilidadeId = 2},
+                new PersonagemHabilidade() {PersonagemId = 5, HabilidadeId = 4}
+            );
+
+            //Relacionamento Arma e Personagem One for One
+            modelBuilder.Entity<Personagem>()
+            .HasOne(e => e.Arma)
+            .WithOne(e => e.Personagem)
+            .HasForeignKey<Arma>(e => e.PersonagemId)
+            .IsRequired();
+
+
+            //Criação Usuario | One for Many
             modelBuilder.Entity<Usuario>().ToTable("TB_USUARIOS");
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Personagens)
@@ -56,6 +98,7 @@ namespace RpgApi.Data
             user.Email = "seuEmail@email.com";
             user.Latitude = -23.5200241;
             user.Longitude = -56.596498;
+
             modelBuilder.Entity<Usuario>().HasData(user);
 
             modelBuilder.Entity<Usuario>().Property(u => u.Perfil).HasDefaultValue("Player");

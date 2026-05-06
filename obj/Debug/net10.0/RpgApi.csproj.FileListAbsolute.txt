@@ -581,3 +581,9 @@ C:\Users\etechas\Desktop\RpgAPI\obj\Debug\net10.0\refint\RpgApi.dll
 C:\Users\etechas\Desktop\RpgAPI\obj\Debug\net10.0\RpgApi.pdb
 C:\Users\etechas\Desktop\RpgAPI\obj\Debug\net10.0\RpgApi.genruntimeconfig.cache
 C:\Users\etechas\Desktop\RpgAPI\obj\Debug\net10.0\ref\RpgApi.dll
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\web.config
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\appsettings.Development.json
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\appsettings.json
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\RpgApi.deps.json
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\RpgApi.runtimeconfig.json
+D:\GABRIEL_COELHO\DS-luiz_felipe\RpgApi\bin\Debug\net10.0\publish\RpgApi.staticwebassets.endpoints.json

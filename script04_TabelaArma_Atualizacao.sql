@@ -1,0 +1,194 @@
+﻿BEGIN TRANSACTION;
+ALTER TABLE [TB_PERSONAGENS] ADD [Derrotas] int NOT NULL DEFAULT 0;
+
+ALTER TABLE [TB_PERSONAGENS] ADD [Disputas] int NOT NULL DEFAULT 0;
+
+ALTER TABLE [TB_PERSONAGENS] ADD [Vitorias] int NOT NULL DEFAULT 0;
+
+ALTER TABLE [TB_ARMAS] ADD [PersonagemId] int NOT NULL DEFAULT 0;
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 1
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 4
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 8
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 2
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 7
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 6;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 7;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 8;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 9;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 10;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 11;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 12;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 13;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 14;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 15;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 16;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 17;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 18;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 19;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 20;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 21;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 22;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 23;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 24;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 25;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 26;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 27;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 28;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 29;
+SELECT @@ROWCOUNT;
+
+
+UPDATE [TB_USUARIOS] SET [PasswordHash] = 0xD31762B989789F6146A6576D21F63DCB014AB15C450054AC550B9E1F76909037477E017503A33858EC08F1059BC26E8E26BE4E4BB44A89909EF73C10AA6BD303, [PasswordSalt] = 0xF0F656A370738C214A41ECF07F985C4C31006CC291A9D63EDFCB46F29E030281DACE4A676FE7415A0B39C1F11DD5826F34A4EAD87E78403A9B1BEC9BEF439E136E718C0762D6E01780205AF93E29F8B058028E14E523FA15E1A31400708ED74B9062762D799FA7A678BBA8049FCE352CF4746448042D4FC2F37C588099D2CEF9
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+
+CREATE UNIQUE INDEX [IX_TB_ARMAS_PersonagemId] ON [TB_ARMAS] ([PersonagemId]);
+
+ALTER TABLE [TB_ARMAS] ADD CONSTRAINT [FK_TB_ARMAS_TB_PERSONAGENS_PersonagemId] FOREIGN KEY ([PersonagemId]) REFERENCES [TB_PERSONAGENS] ([Id]) ON DELETE CASCADE;
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260505230935_MigracaoUmParaUm', N'10.0.5');
+
+COMMIT;
+GO
+
